@@ -1,9 +1,6 @@
 section .data
-msg db 'Addition :='
+msg db 'Multiplication :=',0AH
 len equ $-msg
-msg2 db  ' ',0AH
-len2 equ $-msg2
-
 %macro write 2
 
 	mov edx,%1
@@ -20,15 +17,16 @@ section .text
 	global _start
 	_start:
 
-mov eax,'A'
+mov eax,'3'
 sub eax,'0'
 mov ebx,'2'
 sub ebx,'0'
-add eax,ebx
+mul ebx
 add eax,'0'
 mov[num1],eax
 write len,msg
 write 2,num1
-write len2,msg2
 mov rax,60
 syscall
+	
+
